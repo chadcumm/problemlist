@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/ie-mpage'),
+      dir: require('path').join(__dirname, './coverage/problemlist'),
       subdir: '.',
       reporters: [
         { type: 'html' },
