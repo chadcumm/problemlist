@@ -1,6 +1,6 @@
 {
   "/cclproxy/*": {
-    "target": "http://sub_domain.host_name.com",
+    "target": "http://cernwsb0665.covhlth.net/discern/c0665.chs_tn.cernerasp.com/mpages/reports",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
