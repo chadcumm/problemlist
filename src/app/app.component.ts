@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {mPageService} from "@clinicaloffice/clinical-office-mpage";
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import {mPageService} from "@clinicaloffice/clinical-office-mpage";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  currentApplicationVersion = environment.appVersion;
   constructor(
     public activatedRoute: ActivatedRoute,
     public mPage: mPageService
