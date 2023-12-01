@@ -8,7 +8,7 @@
     }
 
     .mat-header-row {
-        height: 2rem;
+        height: 1rem;
     }
 
     .mat-header-cell {
@@ -16,10 +16,21 @@
     }
 
     .mat-cell {
-        padding: 3px 8px 3px 8px;
+        padding: 2px 5px 2px 5px;
     }
 
     .mat-row:hover {
         background-color: rgb(236, 236, 236);
     }
+}
+
+.separator  {
+    height:100px;
+    vertical-align: bottom;
+}
+
+.smallHidden {
+    color: rgb(213, 213, 213);
+    size: 10pt;
+    font-style: italic;
 }
