@@ -2,3 +2,24 @@
 @use '~@angular/material' as mat;
 @import "theme";
 
+.default-table-settings {
+    .mat-row {
+        height: auto;
+    }
+
+    .mat-header-row {
+        height: 2rem;
+    }
+
+    .mat-header-cell {
+        padding: 3px 8px;
+    }
+
+    .mat-cell {
+        padding: 3px 8px 3px 8px;
+    }
+
+    .mat-row:hover {
+        background-color: rgb(236, 236, 236);
+    }
+}

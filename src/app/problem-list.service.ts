@@ -30,12 +30,12 @@ export class ProblemListService {
 
 // Returns the appointments data
 public get problems(): any[] {
-  return this.custSvc.get('appointments').appointments;
+  return this.custSvc.get('problemdata').problemlist;
 }
 
 // Determine if appointments have been loaded
 public get problemsLoaded(): boolean {
-  return this.custSvc.isLoaded('appointments');
+  return this.custSvc.isLoaded('problemdata');
 }  
 }
  

@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
       this.mPage.setMaxInstances(2, true, 'CHART');
 
       // Add your initialization code here - do not place outside setTimeout function
+      this.problemDS.loadProblems();
     }, 0);
   }
 

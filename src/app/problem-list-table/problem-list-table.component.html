@@ -1,1 +1,8 @@
-<p>problem-list-table works!</p>
+<mpage-table
+[tableData]="problemDS.problems"
+[params]="{
+                paginator: false, 
+                columnFilter: false
+
+            }"
+></mpage-table>
