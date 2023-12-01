@@ -9,10 +9,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { ProblemListTableComponent } from './problem-list-table/problem-list-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProblemListTableComponent
   ],
   imports: [
     BrowserModule,

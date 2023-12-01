@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {mPageService} from "@clinicaloffice/clinical-office-mpage";
 import {environment} from '../environments/environment';
-
+import { ProblemListService } from './problem-list.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   currentApplicationVersion = environment.appVersion;
   constructor(
     public activatedRoute: ActivatedRoute,
-    public mPage: mPageService
+    public mPage: mPageService,
+    public problemDS: ProblemListService
   ) { }
 
   ngOnInit(): void {
