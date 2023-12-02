@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CustomService } from '@clinicaloffice/clinical-office-mpage';
 
+import * as ProblemMockData from './data/cov_patient_problems_sample.json'
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProblemListService {
+  mockData = ProblemMockData
 
   public loading_data = false;
 
@@ -29,7 +32,7 @@ export class ProblemListService {
   }
 
 // Returns the appointments data
-public get problems(): any[] {
+public get problems(): any[] { 
   return this.custSvc.get('problemdata').problemlist;
 }
 

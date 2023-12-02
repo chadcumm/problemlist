@@ -1,8 +1,14 @@
 <mpage-table
 [tableData]="problemDS.problems"
+[toolbar]="false"
 [params]="{
                 paginator: false, 
                 columnFilter: false
 
             }"
+[contextMenu]="[
+                    {icon: 'content_cut', label: 'Cut'},
+                    {icon: 'content_copy', label: 'Copy'},
+                    {icon: 'content_copy',label: 'Paste'}
+                ]"
 ></mpage-table>

@@ -1,3 +1,4 @@
+<div *ngIf="!problemDS.problemsLoaded">Pulling list of problems</div>
 <app-problem-list-table *ngIf="problemDS.problemsLoaded"></app-problem-list-table>
 
 <div class='separator'></div>

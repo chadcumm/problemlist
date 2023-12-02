@@ -1,0 +1,24 @@
+{
+    "personid": 22817175,
+    "problemlistcnt": 3,
+    "problemlist": [
+      {
+        "problemId": 348201235,
+        "problemName": "Headache",
+        "onsetDate": "2010-12-02T00:00:00.000+00:00",
+        "status": "Active"
+      },
+      {
+        "problemId": 348253229,
+        "problemName": "Myocardial injury",
+        "onsetDate": "0000-00-00T00:00:00.000+00:00",
+        "status": "Active"
+      },
+      {
+        "problemId": 348201243,
+        "problemName": "Diabetes",
+        "onsetDate": "2023-11-15T00:00:00.000+00:00",
+        "status": "Resolved"
+      }
+    ]
+  }
