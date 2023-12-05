@@ -1,9 +1,17 @@
-<div *ngIf="!problemDS.problemsLoaded">Pulling list of problems</div>
+
+<div *ngIf="!problemDS.problemsLoaded">
+    <div class="flex items-center justify-center space-x-2">
+    <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-red-600 animate-spin">
+        <div class="h-5 w-5 rounded-full bg-white"></div>
+    </div>
+    <span class="font-sans">Pulling list of problems</span>
+    </div>
+</div>
 <app-problem-list-table *ngIf="problemDS.problemsLoaded"></app-problem-list-table>
 
 <div class='separator'></div>
 
-<div class="smallHidden">
+<div class="opacity-10 italic">
     v{{currentApplicationVersion}}
 </div>
 
