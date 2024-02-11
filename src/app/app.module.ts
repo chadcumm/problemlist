@@ -8,13 +8,16 @@ import {ErrorHandlerService} from "@clinicaloffice/clinical-office-mpage";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { ProblemListTableComponent } from './problem-list-table/problem-list-table.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProblemListTableComponent
+    ProblemListTableComponent,
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { ProblemListTableComponent } from './problem-list-table/problem-list-tab
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatSlideToggleModule
   ],
   providers: [
     {provide: ErrorHandler, useClass: ErrorHandlerService},

@@ -1,0 +1,13 @@
+<mat-toolbar class="topbar">
+    
+   
+    <mat-slide-toggle 
+        [ngModel]="problemListDS.isToggleSelected" 
+        (change)="problemListDS.toggleMyProblems()">
+        My Problems Only
+    </mat-slide-toggle>
+    <span class="spacer" style="width: 100%;"></span> <!-- Add a spacer to push the version number to the right -->
+    <div class="smallHidden">
+        v{{currentApplicationVersion}}
+    </div>
+</mat-toolbar>

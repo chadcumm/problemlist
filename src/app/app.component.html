@@ -1,4 +1,4 @@
-
+<app-topbar></app-topbar>
 <div *ngIf="!problemDS.problemsLoaded">
     <div class="flex items-center justify-center space-x-2">
     <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-red-600 animate-spin">
@@ -10,10 +10,6 @@
 <app-problem-list-table *ngIf="problemDS.problemsLoaded"></app-problem-list-table>
 
 <div class='separator'></div>
-
-<div class="opacity-10 italic">
-    v{{currentApplicationVersion}}
-</div>
 
 <mpage-log-component></mpage-log-component>
 

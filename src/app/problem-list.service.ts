@@ -10,8 +10,8 @@ import { map } from 'rxjs/operators';
 export class ProblemListService {
   
   private localJSONData: any[] | undefined;
-
-  public loading_data = false;
+  private MyProblems: boolean = true;
+  public loading_data: boolean = false;
 
   constructor(
     public problemListDS: CustomService,
@@ -38,7 +38,8 @@ export class ProblemListService {
      }));
   }
 
-// Returns the problems data
+// Returns the problems data looking at the mPage or local JSON data
+
 public get problems(): any[] { 
   if (this.mPage.inMpage === true) {
     return this.problemListDS.get('problemdata').problemlist;
@@ -89,4 +90,14 @@ public localLoadProblems(): void {
       }
     );
     }
+
+    public toggleMyProblems(): void {
+      this.MyProblems = !this.MyProblems;
+      this.mPage.putLog('toggleMyProblems this.MyProblems: ' + this.MyProblems);
+    }
+
+    get isToggleSelected(): boolean {
+      return this.MyProblems;
+  }
+
 };
