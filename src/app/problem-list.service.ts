@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CustomService, mPageService, IColumnConfig } from '@clinicaloffice/clinical-office-mpage';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { map } from 'rxjs/operators';
 
 export class ProblemListService {
   
+  public columnConfigProblemList: IColumnConfig = {columns: [], columnSort: [], freezeLeft: 0};
+
   private localJSONData: any[] | undefined;
   private MyProblems: boolean = true;
   private ActiveProblemsOnly: boolean = true;
@@ -18,6 +21,7 @@ export class ProblemListService {
     public problemListDS: CustomService,
     public mPage: mPageService,
     private http: HttpClient,
+    private _snackBar: MatSnackBar  
   ) { }
 
   public loadProblems(): void {
@@ -39,8 +43,53 @@ export class ProblemListService {
      }));
   }
 
-// Returns the problems data looking at the mPage or local JSON data
+// Load user preferences
+public loadPreferences(): void {
+  this.loading_data = true;
 
+  const prefMessage = this.problemListDS.emptyDmInfo;
+  prefMessage.infoDomain = 'COV Problem List Preferences';
+  prefMessage.infoName = 'column_prefs';
+  prefMessage.infoDomainId = this.problemListDS.mpage.prsnlId
+
+  this.problemListDS.executeDmInfoAction('userPrefs', 'r', [ prefMessage ], () => {
+
+    // Check for user preferences and assign them
+    if (this.problemListDS.isLoaded('userPrefs')) {
+      const LoadedConfig = JSON.parse(this.problemListDS.get('userPrefs').dmInfo[0].longText);
+      this.problemListDS = LoadedConfig.columnConfig;
+      this.mPage.putLog(`Loaded Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.columnConfigProblemList)}`);
+    }
+
+    this.loadProblems()
+  });
+}
+
+public savePreferences(): void {
+  this.mPage.putLog(`Save Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemListDS)}`);
+  if (this.mPage.inMpage === true) {
+    this.problemListDS.executeDmInfoAction('saveUserPrefs', 'w', [
+      {
+        infoDomain: 'COV ACH Patient List Preferences',
+        infoName: 'column_prefs',
+        infoDate: new Date(),
+        infoChar: '',
+        infoNumber: 0,
+        infoLongText: JSON.stringify({
+          columnConfig: this.columnConfigProblemList
+        }),
+        infoDomainId: this.problemListDS.mpage.prsnlId
+      }
+    ], () => {
+      this._snackBar.open('Saved Preferences.', 'Ok', {duration: 1000});
+    });
+  } else {
+  this._snackBar.open('Preferences Would Be Saved', 'Close', {duration: 2000});
+  }
+}
+
+
+// Returns the problems data looking at the mPage or local JSON data
 public get problems(): any[] { 
   let filteredProblemList: any[] = [];
   

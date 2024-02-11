@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       console.log('Mpage Service: inMpage: ', this.mPage.inMpage);
       // Add your initialization code here - do not place outside setTimeout function
       if (this.mPage.inMpage === true) {
-        this.problemDS.loadProblems();
+        this.problemDS.loadPreferences();
       } else {
         this.problemDS.localLoadProblems();
       }
