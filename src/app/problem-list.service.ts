@@ -41,11 +41,27 @@ export class ProblemListService {
 // Returns the problems data looking at the mPage or local JSON data
 
 public get problems(): any[] { 
+  let filteredProblemList: any[] = [];
+  
   if (this.mPage.inMpage === true) {
-    return this.problemListDS.get('problemdata').problemlist;
+    filteredProblemList = this.problemListDS.get('problemdata').problemlist;
   } else {
-    return this.localJSONData?.[0]?.problemlist || [];
+    filteredProblemList = this.localJSONData?.[0]?.problemlist || [];
   }
+
+  return filteredProblemList;
+}
+
+// create a get function to return the userID from the mPage or local JSON data
+public get userID(): number {
+  
+  let user: number = 0;
+  if (this.mPage.inMpage === true) {
+    user = this.problemListDS.get('problemdata').userID;
+  } else {
+    user = this.localJSONData?.[0]?.userId || '';
+  }
+  return user;
 }
 
 // use this function to load th patient data

@@ -1,23 +1,18 @@
 {
-  "personid": 23441176,
+  "runDtTm": "2024-02-11T14:38:55.000+00:00",
+  "patientSource": "{\"PATIENT_SOURCE\":{\"VISITS\":[{\"PERSON_ID\":23441176.000000,\"ENCNTR_ID\":136605723.000000}],\"PATIENTS\":[{\"PERSON_ID\":23441176.000000}]}}",
+  "personId": 23441176,
+  "encntrId": 136605723,
+  "userId": 16908168,
+  "payload": "",
   "problemlistcnt": 5,
   "problemlist": [
     {
-      "problemId": 348661229,
-      "problemName": "Pregnancy",
+      "problemId": 349053229,
+      "problemName": "Weight loss",
       "mostRecentComment": "",
       "onsetDate": "0000-00-00T00:00:00.000+00:00",
-      "status": "Resolved                                 (Chronic)",
-      "hiddenData": {
-        "responsibleProviderId": 0
-      }
-    },
-    {
-      "problemId": 348813229,
-      "problemName": "Carbapenemase producing organism (CPO) identified by diagnostic testing",
-      "mostRecentComment": "",
-      "onsetDate": "0000-00-00T00:00:00.000+00:00",
-      "status": "Active                                   (Chronic)",
+      "status": "Active (Chronic)",
       "hiddenData": {
         "responsibleProviderId": 0
       }
@@ -25,19 +20,19 @@
     {
       "problemId": 348813237,
       "problemName": "Methicillin resistant Staphylococcus aureus",
-      "mostRecentComment": "",
-      "onsetDate": "0000-00-00T00:00:00.000+00:00",
-      "status": "Active                                   (Chronic)",
+      "mostRecentComment": "This problem was added by Discern Expert for Lab confirmed MDRO: Patient has Staph aureus and Methicillin Resistance markers on Biofire Panel.",
+      "onsetDate": "2024-01-10T23:00:00.000+00:00",
+      "status": "Active (Chronic)",
       "hiddenData": {
-        "responsibleProviderId": 0
+        "responsibleProviderId": 16908168
       }
     },
     {
-      "problemId": 349053229,
-      "problemName": "Weight loss",
+      "problemId": 348661229,
+      "problemName": "Pregnancy",
       "mostRecentComment": "",
-      "onsetDate": "0000-00-00T00:00:00.000+00:00",
-      "status": "Active                                   (Chronic)",
+      "onsetDate": "2023-03-24T21:00:00.000+00:00",
+      "status": "Resolved (Chronic)",
       "hiddenData": {
         "responsibleProviderId": 0
       }
@@ -47,7 +42,17 @@
       "problemName": "Body mass index less than 20",
       "mostRecentComment": "",
       "onsetDate": "0000-00-00T00:00:00.000+00:00",
-      "status": "Active                                   (Chronic)",
+      "status": "Active (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    },
+    {
+      "problemId": 348813229,
+      "problemName": "Carbapenemase producing organism (CPO) identified by diagnostic testing",
+      "mostRecentComment": "This problem was added by Discern Expert for Lab confirmed MDRO: Patient has Carbapenemase Producing markers on Biofire panel.",
+      "onsetDate": "2024-01-10T23:00:00.000+00:00",
+      "status": "Active (Chronic)",
       "hiddenData": {
         "responsibleProviderId": 0
       }
