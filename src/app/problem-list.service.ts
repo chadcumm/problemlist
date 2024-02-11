@@ -43,10 +43,12 @@ export class ProblemListService {
 public get problems(): any[] { 
   let filteredProblemList: any[] = [];
   
-  if (this.mPage.inMpage === true) {
-    filteredProblemList = this.problemListDS.get('problemdata').problemlist;
-  } else {
-    filteredProblemList = this.localJSONData?.[0]?.problemlist || [];
+  if (this.problemsLoaded) {
+    if (this.mPage.inMpage === true) {
+      filteredProblemList = this.problemListDS.get('problemdata').problemlist;
+    } else {
+      filteredProblemList = this.localJSONData?.[0]?.problemlist || [];
+    }
   }
 
   return filteredProblemList;
@@ -54,12 +56,13 @@ public get problems(): any[] {
 
 // create a get function to return the userID from the mPage or local JSON data
 public get userID(): number {
-  
   let user: number = 0;
-  if (this.mPage.inMpage === true) {
-    user = this.problemListDS.get('problemdata').userId;
-  } else {
-    user = this.localJSONData?.[0]?.userId || '';
+  if (this.problemsLoaded) {
+    if (this.mPage.inMpage === true) {
+      user = this.problemListDS.get('problemdata').userId;
+    } else {
+      user = this.localJSONData?.[0]?.userId || '';
+    }
   }
   return user;
 }
