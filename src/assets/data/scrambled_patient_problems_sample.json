@@ -1,0 +1,56 @@
+{
+  "personid": 23441176,
+  "problemlistcnt": 5,
+  "problemlist": [
+    {
+      "problemId": 348661229,
+      "problemName": "Pregnancy",
+      "mostRecentComment": "",
+      "onsetDate": "0000-00-00T00:00:00.000+00:00",
+      "status": "Resolved                                 (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    },
+    {
+      "problemId": 348813229,
+      "problemName": "Carbapenemase producing organism (CPO) identified by diagnostic testing",
+      "mostRecentComment": "",
+      "onsetDate": "0000-00-00T00:00:00.000+00:00",
+      "status": "Active                                   (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    },
+    {
+      "problemId": 348813237,
+      "problemName": "Methicillin resistant Staphylococcus aureus",
+      "mostRecentComment": "",
+      "onsetDate": "0000-00-00T00:00:00.000+00:00",
+      "status": "Active                                   (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    },
+    {
+      "problemId": 349053229,
+      "problemName": "Weight loss",
+      "mostRecentComment": "",
+      "onsetDate": "0000-00-00T00:00:00.000+00:00",
+      "status": "Active                                   (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    },
+    {
+      "problemId": 349053235,
+      "problemName": "Body mass index less than 20",
+      "mostRecentComment": "",
+      "onsetDate": "0000-00-00T00:00:00.000+00:00",
+      "status": "Active                                   (Chronic)",
+      "hiddenData": {
+        "responsibleProviderId": 0
+      }
+    }
+  ]
+}

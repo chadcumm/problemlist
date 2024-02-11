@@ -28,9 +28,16 @@ export class AppComponent implements OnInit {
     // Perform MPage Initialization
     setTimeout((e: any) => {
       this.mPage.setMaxInstances(2, true, 'CHART');
-
+      this.mPage.putLog("MPage Initialized " + this.mPage.personId + " " + this.mPage.encntrId + " " + this.mPage.prsnlId + " " + this.mPage.inMpage);
+      console.log('MPage Initialized');
+      console.log('MPage Service:', this.mPage);
+      console.log('Mpage Service: inMpage: ', this.mPage.inMpage);
       // Add your initialization code here - do not place outside setTimeout function
-      this.problemDS.loadProblems();
+      if (this.mPage.inMpage === true) {
+        this.problemDS.loadProblems();
+      } else {
+        this.problemDS.localLoadProblems();
+      }
     }, 0);
   }
 
