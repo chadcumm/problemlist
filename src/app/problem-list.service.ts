@@ -4,13 +4,24 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+// create an interface for the problem view preferences
+export interface IProblemViewPrefs {
+  MyProblems: boolean;
+  ActiveProblemsOnly: boolean;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 
+
+
 export class ProblemListService {
   
+  
   public columnConfigProblemList: IColumnConfig = {columns: [], columnSort: [], freezeLeft: 0};
+  public problemViewPrefs: IProblemViewPrefs = {MyProblems: true, ActiveProblemsOnly: true};
 
   private localJSONData: any[] | undefined;
   private MyProblems: boolean = true;
@@ -45,20 +56,21 @@ export class ProblemListService {
 
 // Load user preferences
 public loadPreferences(): void {
+  this.mPage.putLog('loadPreferences');
   this.loading_data = true;
 
   const prefMessage = this.problemListDS.emptyDmInfo;
   prefMessage.infoDomain = 'COV Problem List Preferences';
-  prefMessage.infoName = 'column_prefs';
+  prefMessage.infoName = 'view_prefs';
   prefMessage.infoDomainId = this.problemListDS.mpage.prsnlId
 
-  this.problemListDS.executeDmInfoAction('userPrefs', 'r', [ prefMessage ], () => {
+  this.problemListDS.executeDmInfoAction('userViewPrefs', 'r', [ prefMessage ], () => {
 
     // Check for user preferences and assign them
-    if (this.problemListDS.isLoaded('userPrefs')) {
-      const LoadedConfig = JSON.parse(this.problemListDS.get('userPrefs').dmInfo[0].longText);
-      this.problemListDS = LoadedConfig.columnConfig;
-      this.mPage.putLog(`Loaded Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.columnConfigProblemList)}`);
+    if (this.problemListDS.isLoaded('userViewPrefs')) {
+      const LoadedConfig = JSON.parse(this.problemListDS.get('userViewPrefs').dmInfo[0].longText);
+      //this.problemListDS = LoadedConfig.columnConfig;
+      this.mPage.putLog(`Loaded Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemViewPrefs)}`);
     }
 
     this.loadProblems()
@@ -66,17 +78,17 @@ public loadPreferences(): void {
 }
 
 public savePreferences(): void {
-  this.mPage.putLog(`Save Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemListDS)}`);
+  this.mPage.putLog(`Save Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemViewPrefs)}`);
   if (this.mPage.inMpage === true) {
-    this.problemListDS.executeDmInfoAction('saveUserPrefs', 'w', [
+    this.problemListDS.executeDmInfoAction('saveUserViewPrefs', 'w', [
       {
         infoDomain: 'COV ACH Patient List Preferences',
-        infoName: 'column_prefs',
+        infoName: 'view_prefs',
         infoDate: new Date(),
         infoChar: '',
         infoNumber: 0,
         infoLongText: JSON.stringify({
-          columnConfig: this.columnConfigProblemList
+          columnConfig: this.problemViewPrefs
         }),
         infoDomainId: this.problemListDS.mpage.prsnlId
       }

@@ -1,5 +1,10 @@
 <mat-toolbar>
     <div style="display: flex; justify-content: space-between; width: 100%;">
+        <div style="width: 50px;">
+            <button mat-icon-button title="Save user preferences" (click)="problemListDS.savePreferences()">
+                <mat-icon>save</mat-icon>
+            </button>
+        </div>
         <div style="width: 200px;">
             <mat-slide-toggle 
                 [ngModel]="problemListDS.isToggleSelected" 
