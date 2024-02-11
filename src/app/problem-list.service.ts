@@ -3,22 +3,13 @@ import { CustomService, mPageService, IColumnConfig } from '@clinicaloffice/clin
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-// create an interface for the problem view preferences
-export interface IProblemViewPrefs {
-  MyProblems: boolean;
-  ActiveProblemsOnly: boolean;
-}
-
+import { IProblemViewPrefs } from './interfaces/problem-view-prefs';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
-
 export class ProblemListService {
-  
   
   public columnConfigProblemList: IColumnConfig = {columns: [], columnSort: [], freezeLeft: 0};
   public problemViewPrefs: IProblemViewPrefs = {MyProblems: true, ActiveProblemsOnly: true};
@@ -173,21 +164,21 @@ public localLoadProblems(): void {
     }
 
   public toggleMyProblems(): void {
-      this.MyProblems = !this.MyProblems;
-      this.mPage.putLog('toggleMyProblems this.MyProblems: ' + this.MyProblems);
+      this.problemViewPrefs.MyProblems = !this.problemViewPrefs.MyProblems;
+      this.mPage.putLog('toggleMyProblems this.problemViewPrefs.MyProblems: ' + this.problemViewPrefs.MyProblems);
   }
 
   public toggleActiveProblems(): void {
-    this.ActiveProblemsOnly = !this.ActiveProblemsOnly;
-    this.mPage.putLog('toggleActiveProblems this.ActiveProblemsOnly: ' + this.ActiveProblemsOnly);
+    this.problemViewPrefs.ActiveProblemsOnly = !this.problemViewPrefs.ActiveProblemsOnly;
+    this.mPage.putLog('toggleActiveProblems this.problemViewPrefs.ActiveProblemsOnly: ' + this.problemViewPrefs.ActiveProblemsOnly);
   }
 
-  get isToggleSelected(): boolean {
-      return this.MyProblems;
+  get isToggleMyProblemsSelected(): boolean {
+      return this.problemViewPrefs.MyProblems;
   }
 
   get isToggleActiveSelected(): boolean {
-    return this.ActiveProblemsOnly;
+    return this.problemViewPrefs.ActiveProblemsOnly;
   }
 
 };

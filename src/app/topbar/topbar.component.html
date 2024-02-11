@@ -7,9 +7,9 @@
         </div>
         <div style="width: 200px;">
             <mat-slide-toggle 
-                [ngModel]="problemListDS.isToggleSelected" 
+                [ngModel]="problemListDS.isToggleMyProblemsSelected" 
                 (change)="problemListDS.toggleMyProblems()">
-                {{ problemListDS.isToggleSelected ? 'My Problems Only' : 'Showing All Providers' }}
+                {{ problemListDS.isToggleMyProblemsSelected ? 'My Problems Only' : 'Showing All Providers' }}
             </mat-slide-toggle>
         </div>
         <div style="width: 200px;">
