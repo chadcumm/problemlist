@@ -57,7 +57,7 @@ public get userID(): number {
   
   let user: number = 0;
   if (this.mPage.inMpage === true) {
-    user = this.problemListDS.get('problemdata').userID;
+    user = this.problemListDS.get('problemdata').userId;
   } else {
     user = this.localJSONData?.[0]?.userId || '';
   }
