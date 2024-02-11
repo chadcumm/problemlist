@@ -11,6 +11,7 @@ export class ProblemListService {
   
   private localJSONData: any[] | undefined;
   private MyProblems: boolean = true;
+  private ActiveProblemsOnly: boolean = true;
   public loading_data: boolean = false;
 
   constructor(
@@ -110,13 +111,22 @@ public localLoadProblems(): void {
     );
     }
 
-    public toggleMyProblems(): void {
+  public toggleMyProblems(): void {
       this.MyProblems = !this.MyProblems;
       this.mPage.putLog('toggleMyProblems this.MyProblems: ' + this.MyProblems);
-    }
+  }
 
-    get isToggleSelected(): boolean {
+  public toggleActiveProblems(): void {
+    this.ActiveProblemsOnly = !this.ActiveProblemsOnly;
+    this.mPage.putLog('toggleActiveProblems this.ActiveProblemsOnly: ' + this.ActiveProblemsOnly);
+  }
+
+  get isToggleSelected(): boolean {
       return this.MyProblems;
+  }
+
+  get isToggleActiveSelected(): boolean {
+    return this.ActiveProblemsOnly;
   }
 
 };

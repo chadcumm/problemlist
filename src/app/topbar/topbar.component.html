@@ -1,11 +1,22 @@
 <mat-toolbar>
-    <mat-slide-toggle 
-        [ngModel]="problemListDS.isToggleSelected" 
-        (change)="problemListDS.toggleMyProblems()">
-        My Problems Only
-    </mat-slide-toggle>
-    <span class="spacer" style="width: 100%;"></span> <!-- Add a spacer to push the version number to the right -->
-    <span class="smallHidden">
-        v{{currentApplicationVersion}};{{problemListDS.userID}}
-    </span>
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+        <div style="width: 200px;">
+            <mat-slide-toggle 
+                [ngModel]="problemListDS.isToggleSelected" 
+                (change)="problemListDS.toggleMyProblems()">
+                {{ problemListDS.isToggleSelected ? 'My Problems Only' : 'Showing All Providers' }}
+            </mat-slide-toggle>
+        </div>
+        <div style="width: 200px;">
+            <mat-slide-toggle 
+                [ngModel]="problemListDS.isToggleActiveSelected" 
+                (change)="problemListDS.toggleActiveProblems()">
+                {{ problemListDS.isToggleActiveSelected ? 'Active Only' : 'Showing All Problems' }}
+            </mat-slide-toggle>
+        </div>
+        <div style="flex-grow: 1;"></div> <!-- Add a spacer to push the version number to the right -->
+        <div class="smallHidden">
+            v{{currentApplicationVersion}};{{problemListDS.userID}}
+        </div>
+    </div>
 </mat-toolbar>
