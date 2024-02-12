@@ -1,6 +1,6 @@
 {
   "name": "problemlist",
-  "version": "0.0.36",
+  "version": "0.0.47",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

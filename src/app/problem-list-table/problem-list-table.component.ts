@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, DoCheck } from '@angular/core';
 import { ProblemListService } from '../problem-list.service';
 
 @Component({
@@ -7,11 +7,21 @@ import { ProblemListService } from '../problem-list.service';
   styleUrls: ['./problem-list-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProblemListTableComponent implements OnInit {
+export class ProblemListTableComponent implements OnInit, DoCheck {
 
   constructor(
-    public problemDS: ProblemListService
+    public problemDS: ProblemListService,
+    public cdr: ChangeDetectorRef
   ) { }
+
+  ngDoCheck(): void {
+    if (this.problemDS.refreshed_data) {
+      setTimeout(() => {
+        this.problemDS.refreshed_data = false;
+      });
+      this.cdr.detectChanges();
+    }
+  }
 
   ngOnInit(): void {
   }

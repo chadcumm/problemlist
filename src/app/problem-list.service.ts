@@ -15,9 +15,9 @@ export class ProblemListService {
   public problemViewPrefs: IProblemViewPrefs = {MyProblems: true, ActiveProblemsOnly: true};
 
   private localJSONData: any[] | undefined;
-  private MyProblems: boolean = true;
-  private ActiveProblemsOnly: boolean = true;
+  
   public loading_data: boolean = false;
+  public refreshed_data: boolean = false
 
   constructor(
     public problemListDS: CustomService,
@@ -28,7 +28,7 @@ export class ProblemListService {
 
   public loadProblems(): void {
     this.loading_data = true;
-
+    
     this.problemListDS.load({
       customScript: {
         script: [
@@ -41,13 +41,14 @@ export class ProblemListService {
       }
     }, undefined, (() => { 
       this.loading_data = false;
-      this.mPage.putLog('Problem Data Loaded');
+      this.refreshed_data = true;
+      this.mPage.putLog('Problem Data Loaded and Refreshed');
      }));
   }
 
 // Load user preferences
 public loadPreferences(): void {
-  this.mPage.putLog('loadPreferences');
+  this.mPage.putLog('loadPreferences for prsnlId: ' + this.mPage.prsnlId + ' this.problemListDS.mpage.prsnlId: ' + this.problemListDS.mpage.prsnlId);
   this.loading_data = true;
 
   const prefMessage = this.problemListDS.emptyDmInfo;
@@ -60,7 +61,7 @@ public loadPreferences(): void {
     // Check for user preferences and assign them
     if (this.problemListDS.isLoaded('userViewPrefs')) {
       const LoadedConfig = JSON.parse(this.problemListDS.get('userViewPrefs').dmInfo[0].longText);
-      //this.problemListDS = LoadedConfig.columnConfig;
+      this.problemViewPrefs = LoadedConfig.columnConfig;
       this.mPage.putLog(`Loaded Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemViewPrefs)}`);
     }
 
@@ -73,7 +74,7 @@ public savePreferences(): void {
   if (this.mPage.inMpage === true) {
     this.problemListDS.executeDmInfoAction('saveUserViewPrefs', 'w', [
       {
-        infoDomain: 'COV ACH Patient List Preferences',
+        infoDomain: 'COV Problem List Preferences',
         infoName: 'view_prefs',
         infoDate: new Date(),
         infoChar: '',
