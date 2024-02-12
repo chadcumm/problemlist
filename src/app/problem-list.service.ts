@@ -62,7 +62,11 @@ public loadPreferences(): void {
     if (this.problemListDS.isLoaded('userViewPrefs')) {
       const LoadedConfig = JSON.parse(this.problemListDS.get('userViewPrefs').dmInfo[0].longText);
       this.problemViewPrefs = LoadedConfig.columnConfig;
-      this._snackBar.open('Prefrences Loaded.', 'Ok', {duration: 2000});
+      this._snackBar.open('Prefrences Loaded.', 'Ok', {
+        duration: 1000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+      });
       this.mPage.putLog(`Loaded Preferences for ${this.problemListDS.mpage.prsnlId} ${JSON.stringify(this.problemViewPrefs)}`);
     }
 
@@ -86,10 +90,17 @@ public savePreferences(): void {
         infoDomainId: this.problemListDS.mpage.prsnlId
       }
     ], () => {
-      this._snackBar.open('Saved Preferences.', 'Ok', {duration: 2000});
+      this._snackBar.open('Saved Preferences.', 'Ok', {
+        duration: 2000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top',
+                                                      });
     });
   } else {
-  this._snackBar.open('Preferences Would Be Saved', 'Close', {duration: 2000});
+  this._snackBar.open('Preferences Would Be Saved', 'Close', {
+    duration: 2000,
+    horizontalPosition: 'end',
+    verticalPosition: 'top',});
   }
 }
 
