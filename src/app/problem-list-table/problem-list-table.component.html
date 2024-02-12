@@ -1,15 +1,14 @@
 <mpage-table
 [tableData]="problemDS.problems"
 [(columnConfig)]="problemDS.columnConfigProblemList"
-[toolbar]="false"
+[toolbar]="true"
 [params]="{
                 paginator: false, 
                 columnFilter: false
 
             }"
 [contextMenu]="[
-                    {icon: 'content_cut', label: 'Cut'},
-                    {icon: 'content_copy', label: 'Copy'},
-                    {icon: 'content_copy',label: 'Paste'}
+                    {label: 'Add Comment'},
+                
                 ]"
 ></mpage-table>

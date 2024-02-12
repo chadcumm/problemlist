@@ -107,21 +107,40 @@ public savePreferences(): void {
 
 // Returns the problems data looking at the mPage or local JSON data
 public get problems(): any[] { 
+  let baseProblemList: any[] = [];
   let filteredProblemList: any[] = [];
   
   if (this.problemsLoaded) {
     if (this.mPage.inMpage === true) {
-      filteredProblemList = this.problemListDS.get('problemdata').problemlist;
+      baseProblemList = this.problemListDS.get('problemdata').problemlist;
     } else {
-      filteredProblemList = this.localJSONData?.[0]?.problemlist || [];
+      baseProblemList = this.localJSONData?.[0]?.problemlist || [];
     }
   }
 
-  return filteredProblemList;
+  filteredProblemList = this.localJSONData?.[0]?.problemlist?.filter((problem: any) => {
+    if (this.problemViewPrefs.ActiveProblemsOnly && problem.hiddenData.problemStatus !== 'Active') {
+      return false;
+    }
+    return true;
+  }) || [];
+
+  filteredProblemList = filteredProblemList.filter((problem: any) => {
+    if (this.problemViewPrefs.MyProblems && problem.hiddenData.responsibleProviderId !== this.currentUserID) {
+      return false;
+    }
+    return true;
+  }) || [];
+
+ //log the filteredProblemList to the console 
+  this.mPage.putLog('filteredProblemList: ' + JSON.stringify(filteredProblemList));
+  console.log('filteredProblems: ' + JSON.stringify(filteredProblemList));
+
+  return baseProblemList;
 }
 
 // create a get function to return the userID from the mPage or local JSON data
-public get userID(): number {
+public get currentUserID(): number {
   let user: number = 0;
   if (this.problemsLoaded) {
     if (this.mPage.inMpage === true) {
@@ -178,11 +197,13 @@ public localLoadProblems(): void {
 
   public toggleMyProblems(): void {
       this.problemViewPrefs.MyProblems = !this.problemViewPrefs.MyProblems;
+      this.refreshed_data = true
       this.mPage.putLog('toggleMyProblems this.problemViewPrefs.MyProblems: ' + this.problemViewPrefs.MyProblems);
   }
 
   public toggleActiveProblems(): void {
     this.problemViewPrefs.ActiveProblemsOnly = !this.problemViewPrefs.ActiveProblemsOnly;
+    this.refreshed_data = true
     this.mPage.putLog('toggleActiveProblems this.problemViewPrefs.ActiveProblemsOnly: ' + this.problemViewPrefs.ActiveProblemsOnly);
   }
 
